@@ -1,5 +1,6 @@
 let game = {
-    running: false,
+    running: true,
+    newGame: false,
     ctx: null,
     width: null,
     height: null,
@@ -21,8 +22,9 @@ let game = {
         this.canvas = document.getElementById('canvas') 
         this.ctx = this.canvas.getContext('2d')
         this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
+        
         console.log(this.gameUI.buttonNewGame)
-        console.log('init')
+        console.log('--init')
 
         this.setEvants()
     },
@@ -30,25 +32,58 @@ let game = {
         this.gameUI.buttonNewGame.addEventListener('click', () => {
             this.gameUI.buttonNewGame.style.display = 'none'
             this.canvas.style.display = 'block'
-            console.log('button click')
+            this.newGame = true
+            
+            console.log('--newGame ' + this.newGame)
+            console.log('--button click')
         })
-        console.log('set evants')
+        
+        console.log('--set evants')
     },
     run() {
-        console.log('run')
+        if (this.running) {
+            window.requestAnimationFrame(() => {
+                this.update()
+                this.render()
+                this.run()
+            })
+        }
+
+        //console.log('--run')
     },
     update() {
-        console.log('update')
+        //console.log('--update')
     },
     preload() {
-        console.log('preload')
+        this.sprites.background = new Image()
+        this.sprites.background.src = 'sprites/background.png'
+        this.sprites.background.addEventListener('load', () => {
+            this.run()
+            console.log('--background load')
+        })
+
+        this.sprites.star1 = new Image()
+        this.sprites.star1.src = 'sprites/star1.png'
+        this.sprites.star1.addEventListener('load', () => {
+            this.run()
+            console.log('--star1 load')
+        })
+
+        
+        console.log('--preload')
     },
     render() {
-        console.log('render')
+        this.ctx.clearRect(0, 0, 1280, 720)
+        this.ctx.drawImage(this.sprites.background, 0, 0)
+        this.ctx.drawImage(this.sprites.star1, 1280 / 2, 50)
+
+        //console.log('--render')
     },
     start() {
         this.init()
-        console.log('start')
+        this.preload()
+        
+        console.log('--start')
     }
 }
 
