@@ -1,0 +1,19 @@
+{
+  "name": "catch-the-falling-stars",
+  "version": "1.0.0",
+  "description": "Игра \"Поймай падающие звездочки\"",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Sagittarius87/Catch-the-falling-stars.git"
+  },
+  "author": "Рыков Ярослав Александрович",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sagittarius87/Catch-the-falling-stars/issues"
+  },
+  "homepage": "https://github.com/Sagittarius87/Catch-the-falling-stars#readme"
+}
