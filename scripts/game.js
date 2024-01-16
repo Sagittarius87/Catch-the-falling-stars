@@ -6,6 +6,7 @@ let game = {
     star: null,
     score: null,
     complexity: null,
+    canvas: null,
     sprites: {
         background: null,
         star1: null,
@@ -13,12 +14,24 @@ let game = {
     sounds: {
         clickStar: null, 
     },
+    gameUI: {
+        buttonNewGame: null
+    },
     init() {
-        this.ctx = document.getElementById('canvas').getContext('2d')
-        console.log(this.ctx)
+        this.canvas = document.getElementById('canvas') 
+        this.ctx = this.canvas.getContext('2d')
+        this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
+        console.log(this.gameUI.buttonNewGame)
         console.log('init')
+
+        this.setEvants()
     },
     setEvants() {
+        this.gameUI.buttonNewGame.addEventListener('click', () => {
+            this.gameUI.buttonNewGame.style.display = 'none'
+            this.canvas.style.display = 'block'
+            console.log('button click')
+        })
         console.log('set evants')
     },
     run() {
