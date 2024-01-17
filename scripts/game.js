@@ -1,3 +1,8 @@
+let mouse = {
+    mouseClickX: null,
+    mouseClickY: null
+}
+
 let game = {
     running: true,
     newGame: false,
@@ -36,6 +41,14 @@ let game = {
             
             console.log('--newGame ' + this.newGame)
             console.log('--button click')
+        })
+
+        this.canvas.addEventListener('click', (e) => {
+            mouse.mouseClickX = e.offsetX
+            mouse.mouseClickY = e.offsetY
+            
+            console.log('mouse click x: ' + MOUSE.mouseClickX)
+            console.log('mouse click y: ' + MOUSE.mouseClickY)
         })
         
         console.log('--set evants')
