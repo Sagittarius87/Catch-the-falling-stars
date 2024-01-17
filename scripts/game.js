@@ -47,8 +47,8 @@ let game = {
             mouse.mouseClickX = e.offsetX
             mouse.mouseClickY = e.offsetY
             
-            console.log('mouse click x: ' + MOUSE.mouseClickX)
-            console.log('mouse click y: ' + MOUSE.mouseClickY)
+            console.log('mouse click x: ' + mouse.mouseClickX)
+            console.log('mouse click y: ' + mouse.mouseClickY)
         })
         
         console.log('--set evants')
@@ -97,6 +97,22 @@ let game = {
         this.preload()
         
         console.log('--start')
+    }
+}
+
+game.star = {
+    velocity: 2,
+    dx: 0,
+    dy: 0,
+    x: 640,
+    y: 50,
+    width: 48,
+    height: 48,
+    start() {
+        console.log('star start')
+    },
+    move() {
+        console.log('star move')
     }
 }
 
