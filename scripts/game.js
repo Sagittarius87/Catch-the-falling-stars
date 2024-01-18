@@ -38,7 +38,7 @@ let game = {
             this.gameUI.buttonNewGame.style.display = 'none'
             this.canvas.style.display = 'block'
             this.newGame = true
-            
+                          
             console.log('--newGame ' + this.newGame)
             console.log('--button click')
         })
@@ -65,6 +65,9 @@ let game = {
         //console.log('--run')
     },
     update() {
+        if (this.newGame) {
+            game.star.move()
+        }
         //console.log('--update')
     },
     preload() {
@@ -88,32 +91,46 @@ let game = {
     render() {
         this.ctx.clearRect(0, 0, 1280, 720)
         this.ctx.drawImage(this.sprites.background, 0, 0)
-        this.ctx.drawImage(this.sprites.star1, 1280 / 2, 50)
-
+        this.renderStars()
         //console.log('--render')
     },
+    renderStars() {
+        this.ctx.drawImage(this.sprites.star1, this.star.x, this.star.y)
+    },
     start() {
+        console.log(this.generateRandomNumber(1, 5))
         this.init()
         this.preload()
         
         console.log('--start')
+    },
+    generateRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min)
     }
 }
 
 game.star = {
     velocity: 2,
-    dx: 0,
-    dy: 0,
-    x: 640,
+    //dx: 0,
+    //dy: 50,
+    x: 0,
     y: 50,
     width: 48,
     height: 48,
+    //startingPointX: 0,
+    //startingPointY: 0,
     start() {
+        this.x = game.generateRandomNumber(1, 1280)
         console.log('star start')
+        console.log('star x ' + this.x)
     },
     move() {
+        if (this.x > 0) {
+            this.y += 1 * this.velocity
+        }
         console.log('star move')
     }
 }
 
 game.start()
+game.star.start()  
