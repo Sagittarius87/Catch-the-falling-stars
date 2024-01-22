@@ -67,6 +67,7 @@ let game = {
     update() {
         if (this.newGame) {
             game.star.move()
+            game.star.clickOnStar()  
         }
         //console.log('--update')
     },
@@ -122,15 +123,34 @@ game.star = {
     start() {
         this.x = game.generateRandomNumber(1, 1280)
         console.log('star start')
-        console.log('star x ' + this.x)
+        console.log('star x ' + this.x + ', ' + (this.x + this.width))
+        console.log('star y ' + this.y + ', ' + (this.y + this.height))
     },
     move() {
-        if (this.x > 0) {
-            this.y += 1 * this.velocity
-        }
+        //if (this.x > 0) {
+        //    this.y += 1 * this.velocity
+        //}
         console.log('star move')
+        //console.log('star move ' + this.y)
+    },
+    clickOnStar(element) {
+        let x = this.x + this.width
+        let y = this.y + this.height
+        if (mouse.mouseClickX != null && mouse.mouseClickY != null) {
+            if ((mouse.mouseClickX > this.x && mouse.mouseClickX < x) && (mouse.mouseClickY > this.y && mouse.mouseClickY < y)) {
+                console.log('click on star')
+            } else {
+                console.log('not click on star')
+            }
+        }
+        //console.log(this.x)
+        //console.log(this.y)
+    },
+    collide(element) {
+        console.log('collide')
     }
 }
 
 game.start()
-game.star.start()  
+game.star.start()
+
