@@ -26,9 +26,18 @@ let game = {
     init() {
         this.canvas = document.getElementById('canvas') 
         this.ctx = this.canvas.getContext('2d')
+        this.width = window.innerWidth
+        this.height = window.innerHeight
+        this.canvas.width = this.width
+        this.canvas.height = this.height
         this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
         
         console.log(this.gameUI.buttonNewGame)
+        console.log('width: ' + this.width)
+        console.log('height: ' + this.height)
+        console.log('canvas width: ' + this.canvas.width)
+        console.log('canvas height: ' + this.canvas.height)
+
         console.log('--init')
 
         this.setEvants()
@@ -90,8 +99,8 @@ let game = {
         console.log('--preload')
     },
     render() {
-        this.ctx.clearRect(0, 0, 1280, 720)
-        this.ctx.drawImage(this.sprites.background, 0, 0)
+        this.ctx.clearRect(0, 0, this.width, this.height)
+        this.ctx.drawImage(this.sprites.background, 0, 0, this.width, this.height)
         this.renderStars()
         //console.log('--render')
     },
@@ -121,7 +130,7 @@ game.star = {
     //startingPointX: 0,
     //startingPointY: 0,
     start() {
-        this.x = game.generateRandomNumber(1, 1280)
+        this.x = game.generateRandomNumber(1, game.width - 50)
         console.log('star start')
         console.log('star x ' + this.x + ', ' + (this.x + this.width))
         console.log('star y ' + this.y + ', ' + (this.y + this.height))
