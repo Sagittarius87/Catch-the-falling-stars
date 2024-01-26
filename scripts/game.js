@@ -26,10 +26,8 @@ let game = {
     init() {
         this.canvas = document.getElementById('canvas') 
         this.ctx = this.canvas.getContext('2d')
-        this.width = window.innerWidth
-        this.height = window.innerHeight
-        this.canvas.width = this.width
-        this.canvas.height = this.height
+        
+        
         this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
         
         console.log(this.gameUI.buttonNewGame)
@@ -58,6 +56,16 @@ let game = {
             
             console.log('mouse click x: ' + mouse.mouseClickX)
             console.log('mouse click y: ' + mouse.mouseClickY)
+        })
+
+        window.addEventListener('resize', () => {
+            this.width = window.innerWidth
+            this.height = window.innerHeight
+            this.canvas.width = this.width
+            this.canvas.height = this.height
+
+            console.log(this.canvas.width)
+            console.log(this.canvas.height)
         })
         
         console.log('--set evants')
